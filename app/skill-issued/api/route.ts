@@ -1,4 +1,4 @@
-import type { NextRequest } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 
 import { generate } from "@/utils/generate";
 
@@ -8,5 +8,5 @@ export async function GET(request: NextRequest) {
 
   const data = await generate(total);
 
-  return Response.json(data);
+  return NextResponse.json(data);
 }

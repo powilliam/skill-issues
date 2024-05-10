@@ -1,4 +1,4 @@
-import type { NextRequest } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 
 import { generate } from "@/utils/generate";
 import { squared } from "@/utils/squared";
@@ -10,5 +10,5 @@ export async function GET(request: NextRequest) {
   const data = await generate(total);
   const output = squared(data);
 
-  return Response.json(output);
+  return NextResponse.json(output);
 }
