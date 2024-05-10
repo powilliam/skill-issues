@@ -6,6 +6,7 @@ import useStaleWhileRevalidate from "swr";
 import { AutoSizer, List } from "react-virtualized";
 
 import { json } from "@/utils/json";
+import { screen } from "@/utils/window";
 
 export default function Page({
   searchParams: { total },
@@ -18,6 +19,8 @@ export default function Page({
     fetch(`/non-skill-issued/api?total=${total || 100}`).then(json)
   );
 
+  const sSize = screen();
+
   return (
     <main style={{ overflowY: "hidden" }}>
       <AutoSizer disableHeight>
@@ -25,7 +28,7 @@ export default function Page({
           <List
             {...size}
             rowHeight={25}
-            height={window?.screen?.availHeight || 0}
+            height={sSize.availHeight}
             rowCount={numbers?.length || 0}
             rowRenderer={({ index, style }) => (
               <div key={numbers[index]} style={style}>
