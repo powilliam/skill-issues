@@ -25,7 +25,7 @@ export default function Page({
           <List
             {...size}
             rowHeight={25}
-            height={window.screen.availHeight}
+            height={window?.screen?.availHeight || 0}
             rowCount={numbers?.length || 0}
             rowRenderer={({ index, style }) => (
               <div key={numbers[index]} style={style}>
