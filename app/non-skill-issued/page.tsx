@@ -5,6 +5,8 @@ import useStaleWhileRevalidate from "swr";
 
 import { AutoSizer, List } from "react-virtualized";
 
+import { json } from "@/utils/json";
+
 export default function Page({
   searchParams: { total },
 }: {
@@ -13,7 +15,7 @@ export default function Page({
   useReportWebVitals(console.log);
 
   const { data: numbers } = useStaleWhileRevalidate("non-skill-issued", () =>
-    fetch(`/non-skill-issued/api?total=${total || 100}`).then((r) => r.json())
+    fetch(`/non-skill-issued/api?total=${total || 100}`).then(json)
   );
 
   return (

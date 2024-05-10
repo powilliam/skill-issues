@@ -1,6 +1,6 @@
 import type { NextRequest } from "next/server";
 
-import { generate } from "@/utils/generate-numbers";
+import { generate } from "@/utils/generate";
 
 export async function GET(request: NextRequest) {
   const query = request.nextUrl.searchParams;
