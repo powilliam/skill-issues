@@ -8,7 +8,12 @@ export async function GET(request: NextRequest) {
   const total = Number(query.get("total")) || 100;
 
   const data = await generate(total);
-  const output = squared(data);
 
-  return NextResponse.json(output);
+  const first = squared(data);
+  const second = squared(first);
+  const third = squared(second);
+  const fourth = squared(third);
+  const fifth = squared(fourth);
+
+  return NextResponse.json(fifth);
 }

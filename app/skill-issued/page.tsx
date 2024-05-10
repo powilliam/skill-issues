@@ -21,6 +21,10 @@ export default function Page({
     fetch(`/skill-issued/api?total=${total || 100}`)
       .then(json)
       .then(squared)
+      .then(squared)
+      .then(squared)
+      .then(squared)
+      .then(squared)
   );
 
   const { availHeight } = useScreen();
