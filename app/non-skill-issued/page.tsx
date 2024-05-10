@@ -3,6 +3,8 @@
 import { useReportWebVitals } from "next/web-vitals";
 import useStaleWhileRevalidate from "swr";
 
+import { AutoSizer, List } from "react-virtualized";
+
 export default function Page({
   searchParams: { total },
 }: {
@@ -15,10 +17,22 @@ export default function Page({
   );
 
   return (
-    <ol>
-      {numbers?.map((number: number) => (
-        <li key={number}>{number}</li>
-      ))}
-    </ol>
+    <main style={{ overflowY: "hidden" }}>
+      <AutoSizer disableHeight>
+        {(size) => (
+          <List
+            {...size}
+            rowHeight={25}
+            height={window.screen.availHeight}
+            rowCount={numbers?.length || 0}
+            rowRenderer={({ index, style }) => (
+              <div key={numbers[index]} style={style}>
+                <li>{numbers[index]}</li>
+              </div>
+            )}
+          />
+        )}
+      </AutoSizer>
+    </main>
   );
 }

@@ -1,4 +1,5 @@
 import "./globals.css";
+import "react-virtualized/styles.css";
 
 import type { Metadata } from "next";
 
